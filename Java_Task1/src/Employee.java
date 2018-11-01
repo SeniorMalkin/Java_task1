@@ -1,7 +1,7 @@
 public class Employee {
     private int id;
     private String firstName;
-    private  String lastName;
+    private String lastName;
     private  int salary;
 
     public Employee(int id, String firstName, String lastName, int salary) {
@@ -47,5 +47,23 @@ public class Employee {
     public String toString() {
         return "Employee: id:" + id +" firstName:" +firstName
                 + "lastName" + lastName + "  salary:" + salary;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        Employee empl = (Employee) obj;
+        return id == empl.id && firstName.equals(empl.firstName) && lastName.equals(empl.lastName) && salary == empl.salary;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result += firstName.hashCode();
+        result += lastName.hashCode();
+        result += salary;
+        return result;
     }
 }

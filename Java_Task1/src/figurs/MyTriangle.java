@@ -44,4 +44,18 @@ public class MyTriangle {
             }
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        MyTriangle trian = (MyTriangle) obj;
+        return v1.equals(trian.v1) && v2.equals(trian.v2) && v3.equals(trian.v3);
+    }
+
+    @Override
+    public int hashCode() {
+    return v1.hashCode() + v2.hashCode() + v3.hashCode();
+    }
 }

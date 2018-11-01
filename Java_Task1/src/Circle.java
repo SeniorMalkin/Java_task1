@@ -38,4 +38,21 @@ public class Circle {
     {
         return Math.PI * radius * radius;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        Circle circ = (Circle)obj;
+        return radius == circ.radius && color.equals(circ.color);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = color.hashCode();
+        long f = Double.doubleToLongBits(radius);
+        result += (int)(f^(f >>> 32));
+        return result;
+    }
 }

@@ -4,8 +4,8 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 public class MyPoint {
-    private int x =0;
-    private int y =0;
+    private double x =0;
+    private double y =0;
 
     public MyPoint() {
     }
@@ -15,7 +15,7 @@ public class MyPoint {
         this.y = y;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
@@ -23,15 +23,15 @@ public class MyPoint {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
     public void setY(int y) {
         this.y = y;
     }
-    public int[] getXY(){
-        int[] result = {x,y};
+    public double[] getXY(){
+        double[] result = {x,y};
         return result;
 
     }
@@ -45,15 +45,37 @@ public class MyPoint {
     public String toString() {
         return "( " + x +" , " + y +" )";
     }
-    public double distance(int x,int y){
+
+    public double distance(double x,double y){
         double result =0;
         result = sqrt(pow(x - this.x,2) + pow(y-this.y,2));
         return result;
     }
+
     public  double distance(MyPoint point){
         return distance(point.getX(),point.getY());
     }
+
     public  double distance(){
         return distance(0,0);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        MyPoint point = (MyPoint) obj;
+        return x == point.x && y == point.x;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 0;
+        long f = Double.doubleToLongBits(x);
+        result += (int)(f^(f >>> 32));
+        f = Double.doubleToLongBits(y);
+        result += (int)(f^(f >>> 32));
+        return result;
     }
 }

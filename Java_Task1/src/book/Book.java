@@ -45,7 +45,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book: name: " + name + "  authors: " + authors
+        return "Book: name: " + name + "  authors: " + getAuthorNames()
                 + "  price: " + price + "  qty " +qty;
     }
     public  String getAuthorNames()
@@ -55,6 +55,25 @@ public class Book {
              ) {
             result += a.getName() + ",";
         }
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        Book book = (Book) obj;
+        return name.equals(book.name) && authors.equals(book.authors) && price == book.price && qty == book.qty;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result += authors.hashCode();
+        long f = Double.doubleToLongBits(price);
+        result += (int)(f^(f >>> 32));
+        result += qty;
         return result;
     }
 }
