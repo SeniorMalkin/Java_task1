@@ -66,7 +66,7 @@ public class MyPoint {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         MyPoint point = (MyPoint) obj;
-        return x == point.x && y == point.x;
+        return x == point.x && y == point.y;
     }
 
     @Override

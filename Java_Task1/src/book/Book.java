@@ -64,7 +64,12 @@ public class Book {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         Book book = (Book) obj;
-        return name.equals(book.name) && authors.equals(book.authors) && price == book.price && qty == book.qty;
+        for(int i =0 ;i<authors.length;i++)
+        {
+            if(!authors[i].equals(book.authors[i]))
+                return false;
+        }
+        return name.equals(book.name) && price == book.price && qty == book.qty;
     }
 
     @Override
